@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-md-8 offset-lg-2">
+        <div class="card">
+            <div class="card-header">
+                <h3>Lista de Archivos</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 mt-3">
+                        <p-table #dt [value]="archivos" dataKey="item" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" responsiveLayout="scroll" [paginator]="true" currentPageReportTemplate="Registros {first} - {last} de {totalRecords}"
+                            [filterDelay]="0" [globalFilterFields]="['name']">
+                            <ng-template pTemplate="caption">
+                                <div class="row text-right">
+                                    <span class="p-input-icon-left ml-auto">
+                                        <i class="pi pi-search"></i>
+                                        <input pInputText type="text" (input)="applyFilterGlobal($event,'contains')" placeholder="Buscar...">
+                                    </span>
+                                </div>
+                            </ng-template>
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>
+                                        <div class="flex justify-content-between align-items-center">
+                                            Nombre
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="flex justify-content-between align-items-center">
+                                            Acción
+                                        </div>
+                                    </th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-file>
+                                <tr class="p-selectable-row">
+                                    <td>
+                                        <span class="p-column-title">Nombre</span> {{file.name}}
+                                    </td>
+                                    <td>
+                                        <span style="cursor: pointer; text-decoration: solid;" (click)="alertaReimpresion(file.name)">
+                                        <i class="pi pi-print" style="font-size: 1.5rem"></i>
+                                    </span>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="emptymessage">
+                                <tr>
+                                    <td colspan="8">Registros no encontrados!</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

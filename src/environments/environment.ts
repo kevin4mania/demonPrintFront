@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  demonPrintService:'http://172.20.68.103:5004',
   production: false
+  
 };
 
 /*
