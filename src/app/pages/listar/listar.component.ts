@@ -24,6 +24,9 @@ export class ListarComponent implements OnInit {
     this.service.obtenerListadoArchivos().subscribe((res: any) => {
       if (res.ok && res.codError == '0001') {
         this.archivos = res.body;
+        // console.log("*****Archivos***");
+        // console.log(this.archivos);
+        // console.log("*************");
         this.service.loadingCarga(false);
       }else{
         this.service.loadingCarga(false);
@@ -45,10 +48,10 @@ export class ListarComponent implements OnInit {
 
 
 //** */
-alertaReimpresion(archivo: string) {
+alertaReimpresion(facturaName: string,archivo: string) {
   Swal.fire({
     title: 'Reimprimir',
-    text: '¿Está seguro de reimprimir ' + archivo,
+    text: '¿Está seguro de reimprimir ' + facturaName,
     icon: 'warning',
     showCancelButton: true,
     confirmButtonText: 'Si, reimprimir!',
